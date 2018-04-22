@@ -1,13 +1,6 @@
-=========
+^^^^^^^^^
 Changelog
-=========
-
-0.62.0 (2018-03-13)
--------------------
-
-* Rebuilt for ament
-* cxx14 support
-* ubuntu distros zesty and artful
+^^^^^^^^^
 
 0.61.6 (2017-02-05)
 -------------------

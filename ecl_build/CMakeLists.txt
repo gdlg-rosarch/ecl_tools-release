@@ -2,38 +2,34 @@
 # Cmake
 ##############################################################################
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 2.8.3)
 project(ecl_build)
 
 ##############################################################################
-# Find Packages
+# Catkin
 ##############################################################################
 
-find_package(ament_cmake REQUIRED)
-
-##############################################################################
-# CMake Modules
-##############################################################################
+find_package(catkin REQUIRED)
 
 set(${PROJECT_NAME}_MODULES "")
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/ecl_platform_detection.cmake)
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/ecl_package.cmake)
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/ecl_find_sse.cmake)
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/ecl_build_utilities.cmake)
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/ecl_cxx.cmake)
-list(APPEND ${PROJECT_NAME}_MODULES ${CMAKE_SOURCE_DIR}/cmake/cotire.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES ecl_platform_detection.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES ecl_package.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES ecl_find_sse.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES ecl_build_utilities.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES ecl_cx11.cmake)
+list(APPEND ${PROJECT_NAME}_MODULES cotire.cmake)
+
+catkin_package(
+    CFG_EXTRAS ${${PROJECT_NAME}_MODULES}
+)
+
 
 ##############################################################################
-# Exports
-##############################################################################
-
-ament_package(CONFIG_EXTRAS ${${PROJECT_NAME}_MODULES})
-
-##############################################################################
-# Installs
+# Work
 ##############################################################################
 
 install(DIRECTORY cmake
-        DESTINATION share
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+
 
